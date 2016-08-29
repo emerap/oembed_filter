@@ -1,7 +1,7 @@
 {
   "name": "emerap/oembed_filter",
   "type": "library",
-  "description": "Embed filter",
+  "description": "Oembed filter",
   "keywords": [
     "api", "oembed"
   ],
