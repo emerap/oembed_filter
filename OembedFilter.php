@@ -25,11 +25,10 @@ class OembedFilter {
    * Find urls in source text.
    */
   private function findUrls() {
-    preg_match_all('/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i', $this->getSourceText(), $match_urls);
-    $urls = array();
+    preg_match_all('/\b(?:(?:https?|http):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i', $this->getSourceText(), $match_urls);
     if (isset($match_urls[0])) {
       foreach ($match_urls[0] as $url) {
-        $this->findUrls($url);
+        $this->findService($url);
       }
     }
   }
@@ -43,7 +42,7 @@ class OembedFilter {
    * @return bool
    *   State;
    */
-  private function findServices($url) {
+  private function findService($url) {
     // Create instances if not exist.
     if (!$this->getServicesObjects()) {
       $services = array();
