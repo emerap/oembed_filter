@@ -5,31 +5,31 @@ namespace Emerap\OembedFilter\Service;
 use Emerap\OembedFilter\ServiceBase;
 
 /**
- * Class YoutubeOembed.
+ * Class SoundCloudOembed.
  *
  * @package Emerap\OembedFilter\Service
  */
-class YoutubeOembed extends ServiceBase {
+class SoundCloudOembed extends ServiceBase {
 
   /**
    * {@inheritdoc}
    */
   public function getId() {
-    return 'YouTube';
+    return 'SoundCloud';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return '/https:\/\/www\.youtube\.com/';
+    return '/https:\/\/soundcloud\.com/';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getEndpoit() {
-    return 'http://www.youtube.com/oembed';
+    return 'https://soundcloud.com/oembed';
   }
 
   /**

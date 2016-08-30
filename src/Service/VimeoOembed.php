@@ -5,31 +5,31 @@ namespace Emerap\OembedFilter\Service;
 use Emerap\OembedFilter\ServiceBase;
 
 /**
- * Class YoutubeOembed.
+ * Class VimeoOembed.
  *
  * @package Emerap\OembedFilter\Service
  */
-class YoutubeOembed extends ServiceBase {
+class VimeoOembed extends ServiceBase {
 
   /**
    * {@inheritdoc}
    */
   public function getId() {
-    return 'YouTube';
+    return 'Vimeo';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return '/https:\/\/www\.youtube\.com/';
+    return '/https:\/\/vimeo\.com/';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getEndpoit() {
-    return 'http://www.youtube.com/oembed';
+    return 'https://vimeo.com/api/oembed.json';
   }
 
   /**

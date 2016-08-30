@@ -5,31 +5,31 @@ namespace Emerap\OembedFilter\Service;
 use Emerap\OembedFilter\ServiceBase;
 
 /**
- * Class YoutubeOembed.
+ * Class CodepenOembed.
  *
  * @package Emerap\OembedFilter\Service
  */
-class YoutubeOembed extends ServiceBase {
+class CodepenOembed extends ServiceBase {
 
   /**
    * {@inheritdoc}
    */
   public function getId() {
-    return 'YouTube';
+    return 'Codepen';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return '/https:\/\/www\.youtube\.com/';
+    return '/http(|s):\/\/codepen\.io/';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getEndpoit() {
-    return 'http://www.youtube.com/oembed';
+    return 'https://codepen.io/api/oembed';
   }
 
   /**
