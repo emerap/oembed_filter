@@ -113,9 +113,9 @@ class OembedFilter {
     foreach ($this->getUrls() as $url) {
       /** @var ServiceBase $service */
       $service = $url['service'];
-      $path = $url['path'];
+      $path    = $url['path'];
       if ($oembed_request = $this->getOembedData($service, $path)) {
-        $snippet = $service->filter($oembed_request);
+        $snippet = $this->buildHtml($service->filter($oembed_request), $service);
         $replace[$path] = $snippet;
       }
     }
@@ -149,7 +149,7 @@ class OembedFilter {
       );
       curl_setopt($curl, CURLOPT_POSTFIELDS, $query_params);
       $data = curl_exec($curl);
-      $req = $this->parse($data, $service);
+      $req  = $this->parse($data, $service);
       curl_close($curl);
     }
     return $req;
@@ -221,6 +221,51 @@ class OembedFilter {
     }
 
     return $oembed_data;
+  }
+
+  /**
+   * Get vendor css class.
+   *
+   * @return string
+   *   Vendor css class.
+   */
+  private function getVendorCssClass() {
+    return 'emerap-oembed';
+  }
+
+  /**
+   * Get html wrapper.
+   *
+   * @return string
+   *   Html wrapper.
+   */
+  private function getHtmlWrapper() {
+    return '<div class="%classes">%content</div>';
+  }
+
+  /**
+   * Build html.
+   *
+   * @param string $snippet
+   *   After service filter.
+   * @param \Emerap\OembedFilter\ServiceBase $service
+   *   Service instance.
+   *
+   * @return string
+   *   Total string.
+   */
+  private function buildHtml($snippet, ServiceBase $service) {
+    $out = $this->getHtmlWrapper();
+    $css_vendor = $this->getVendorCssClass();
+    $classes = array(
+      $css_vendor . '-wrapper',
+      $css_vendor . '-' . mb_strtolower($service->getId()),
+    );
+
+    $out = str_replace('%classes', implode(' ', $classes), $out);
+    $out = str_replace('%content', $snippet, $out);
+
+    return $out;
   }
 
   /**
