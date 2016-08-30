@@ -15,7 +15,7 @@ class YoutubeOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getId() {
-    return 'youtube';
+    return 'YouTube';
   }
 
   /**
@@ -29,14 +29,14 @@ class YoutubeOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getEndpoit() {
-    return 'https://www.youtube.com/oembed';
+    return 'http://www.youtube.com/oembed';
   }
 
   /**
    * {@inheritdoc}
    */
   public function filter($fields) {
-    return '';
+    return '<div style="width: 100% height: 75%;">' . $fields['html'] . '</div>';
   }
 
 }

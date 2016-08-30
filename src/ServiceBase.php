@@ -10,10 +10,13 @@ namespace Emerap\OembedFilter;
 abstract class ServiceBase implements ServiceInterface {
 
   /**
-   * {@inheritdoc}
+   * Get format response.
+   *
+   * @tag int
+   *   Format response.
    */
   public function getFormatResponse() {
-    return 'json';
+    return EMERAP_OEMBED_FILTER_RESPONSE_XML;
   }
 
 }
