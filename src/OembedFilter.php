@@ -10,12 +10,14 @@ namespace Emerap\OembedFilter;
 class OembedFilter {
 
   protected $sourceText;
-  protected $processingText;
   protected $urls;
   protected $servicesObjects;
 
   /**
    * EmbedFilter constructor.
+   *
+   * @param string $text
+   *   Source text.
    */
   public function __construct($text) {
     $this->setSourceText($text);
@@ -95,6 +97,13 @@ class OembedFilter {
   }
 
   /**
+   * Apply oembed filter.
+   */
+  public function apply() {
+    $this->findUrls();
+  }
+
+  /**
    * GETTERS / SETTERS.
    */
 
@@ -118,29 +127,6 @@ class OembedFilter {
    */
   public function setSourceText($source_text) {
     $this->sourceText = $source_text;
-    return $this;
-  }
-
-  /**
-   * Get processing text.
-   *
-   * @return string
-   *   Processing text.
-   */
-  public function getProcessingText() {
-    return $this->processingText;
-  }
-
-  /**
-   * Set processing text.
-   *
-   * @param string $processing_text
-   *   Processing text.
-   *
-   * @return $this
-   */
-  public function setProcessingText($processing_text) {
-    $this->processingText = $processing_text;
     return $this;
   }
 

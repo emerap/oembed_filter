@@ -22,14 +22,14 @@ class YoutubeOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return '/http://www.youtube.com/';
+    return '/https:\/\/www\.youtube\.com/';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getEndpoit() {
-    return 'http://www.youtube.com/oembed';
+    return 'https://www.youtube.com/oembed';
   }
 
   /**
