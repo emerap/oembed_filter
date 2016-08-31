@@ -29,7 +29,7 @@ class AnimatronOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getEndpoit() {
-    return 'https://animatron.com/oembed/json';
+    return 'https://www.animatron.com/oembed/json';
   }
 
   /**
