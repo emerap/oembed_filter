@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-Replacement oembed service link to different types of content.
+Replacement oEmbed service link to different types of content.
 
 ## Features
 
@@ -41,6 +41,6 @@ $str = $filter->apply();
 - Emerap community - (https://vk.com/emerap)
 
 ## Credits
-- Alexander Pokhodyun - Developer
+- [Alexander Pokhodyun](https://vk.com/karbunkul) - Developer
 
-Copyright &copy; 2016 [ [Pokhodyun Alexander](https://vk.com/karbunkul)]
+Copyright &copy; 2016 Alexander Pokhodyun

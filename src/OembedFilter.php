@@ -5,6 +5,8 @@ namespace Emerap\OembedFilter;
 const EMERAP_OEMBED_FILTER_RESPONSE_JSON = 0;
 const EMERAP_OEMBED_FILTER_RESPONSE_XML  = 1;
 
+const EMERAP_OEMBED_FILTER_VERSION = '1.0.0';
+
 /**
  * Class OembedFilter.
  *
@@ -248,6 +250,16 @@ class OembedFilter {
   }
 
   /**
+   * Library version.
+   *
+   * @return string
+   *   Library version.
+   */
+  public static function version() {
+    return EMERAP_OEMBED_FILTER_VERSION;
+  }
+
+  /**
    * GETTERS / SETTERS.
    */
 
@@ -257,7 +269,7 @@ class OembedFilter {
    * @return string
    *   Source text.
    */
-  public function getSourceText() {
+  private function getSourceText() {
     return $this->sourceText;
   }
 
@@ -269,7 +281,7 @@ class OembedFilter {
    *
    * @return $this
    */
-  public function setSourceText($source_text) {
+  private function setSourceText($source_text) {
     $this->sourceText = $source_text;
     return $this;
   }
