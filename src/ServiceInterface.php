@@ -34,6 +34,14 @@ interface ServiceInterface {
   public function getEndpoit();
 
   /**
+   * Get oEmbed discovery.
+   *
+   * @return bool
+   *   Oembed discovery.
+   */
+  public function getDiscovery();
+
+  /**
    * Get format response.
    *
    * @return string

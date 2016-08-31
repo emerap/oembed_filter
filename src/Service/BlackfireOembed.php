@@ -5,31 +5,34 @@ namespace Emerap\OembedFilter\Service;
 use Emerap\OembedFilter\ServiceBase;
 
 /**
- * Class AmChartsOembed.
+ * Class BlackfireOembed.
  *
  * @package Emerap\OembedFilter\Service
  */
-class AmChartsOembed extends ServiceBase {
+class BlackfireOembed extends ServiceBase {
 
   /**
    * {@inheritdoc}
    */
   public function getId() {
-    return 'AmCharts';
+    return 'Blackfire';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return 'https:\/\/live\.amcharts\.com';
+    return array(
+      'https:\/\/blackfire\.io\/profiles\/.*\/graph',
+      'https:\/\/blackfire\.io\/profiles\/compare\/.*\/graph',
+    );
   }
 
   /**
    * {@inheritdoc}
    */
   public function getEndpoit() {
-    return 'https://live.amcharts.com/oembed/';
+    return 'https://blackfire.io/oembed';
   }
 
   /**
@@ -43,7 +46,7 @@ class AmChartsOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getExampleUrls() {
-    return 'https://live.amcharts.com/NjEwN';
+    return 'https://blackfire.io/profiles/ffcffdc1-50db-42bc-bcbb-dcfe86758e26/graph';
   }
 
 }
