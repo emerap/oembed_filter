@@ -31,6 +31,7 @@ $str = $filter->apply();
 - 23HQ (http://www.23hq.com)
 - Alpha App Net (https://alpha.app.net/browse/posts)
 - amCharts Live Editor (http://live.amcharts.com)
+- Animatron (https://www.animatron.com)
 - Codepen (https://codepen.io)
 - SoundCloud (http://soundcloud.com)
 - Vimeo (https://vimeo.com)

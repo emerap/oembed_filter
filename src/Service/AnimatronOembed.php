@@ -5,31 +5,31 @@ namespace Emerap\OembedFilter\Service;
 use Emerap\OembedFilter\ServiceBase;
 
 /**
- * Class AmChartsOembed.
+ * Class AnimatronOembed.
  *
  * @package Emerap\OembedFilter\Service
  */
-class AmChartsOembed extends ServiceBase {
+class AnimatronOembed extends ServiceBase {
 
   /**
    * {@inheritdoc}
    */
   public function getId() {
-    return 'AmCharts';
+    return 'Animatron';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return 'http:\/\/live\.amcharts\.com\/.*';
+    return 'https:\/\/(|www)\.animatron\.com\/project';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getEndpoit() {
-    return 'https://live.amcharts.com/oembed/';
+    return 'https://animatron.com/oembed/json';
   }
 
   /**
@@ -43,7 +43,7 @@ class AmChartsOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getExampleUrls() {
-    return 'https://live.amcharts.com/NjEwN';
+    return 'https://www.animatron.com/project/a7d88f565846acac316121d1';
   }
 
 }
