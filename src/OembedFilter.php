@@ -77,12 +77,15 @@ class OembedFilter {
    *   All available services.
    */
   static public function getServices() {
-    return array(
-      '\Emerap\OembedFilter\Service\CodepenOembed',
-      '\Emerap\OembedFilter\Service\YoutubeOembed',
-      '\Emerap\OembedFilter\Service\SoundCloudOembed',
-      '\Emerap\OembedFilter\Service\VimeoOembed',
-    );
+    $files = scandir(__DIR__ . '/Service');
+    $services = array();
+    foreach ($files as $file) {
+      preg_match('/.*Oembed/', $file, $match);
+      if (isset($match[0])) {
+        $services[] = '\Emerap\OembedFilter\Service\\' . $match[0];
+      }
+    }
+    return $services;
   }
 
   /**
