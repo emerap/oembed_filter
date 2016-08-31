@@ -35,6 +35,7 @@ $str = $filter->apply();
 - Animoto (http://animoto.com)
 - Blackfire.io (https://blackfire.io)
 - Codepen (https://codepen.io)
+- Coub (http://coub.com)
 - SoundCloud (http://soundcloud.com)
 - Vimeo (https://vimeo.com)
 - YouTube (http://www.youtube.com)
