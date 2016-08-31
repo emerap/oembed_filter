@@ -156,12 +156,12 @@ class OembedFilter {
    */
   private function getOembedData(ServiceBase $service, $url) {
     $req = FALSE;
-
-    $query_params = $query_params = array(
-      'url'    => $url,
-      'format' => ($service->getFormatResponse() == EMERAP_OEMBED_FILTER_RESPONSE_JSON) ? 'json' : 'xml',
-    );
-
+    $query_params = array('url' => $url);
+    // Checking format response on endpoint path.
+    if (!preg_match('/\.(json|xml)$/', $service->getEndpoit())) {
+      $query_params['format'] = ($service->getFormatResponse() == EMERAP_OEMBED_FILTER_RESPONSE_JSON) ? 'json' : 'xml';
+    }
+    // Get oembed response from service.
     if ($curl = curl_init()) {
       curl_setopt($curl, CURLOPT_URL, $service->getEndpoit() . '?' . http_build_query($query_params));
       curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
