@@ -22,10 +22,7 @@ class CoubOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return array(
-      'http:\/\/coub\.com\/view',
-      'http:\/\/coub\.com/embed',
-    );
+    return 'http(|s):\/\/coub\.com\/(view|embed';
   }
 
   /**

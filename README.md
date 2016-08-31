@@ -36,6 +36,7 @@ $str = $filter->apply();
 - Blackfire.io (https://blackfire.io)
 - Codepen (https://codepen.io)
 - Coub (http://coub.com)
+- Instagram (https://instagram.com)
 - SoundCloud (http://soundcloud.com)
 - Vimeo (https://vimeo.com)
 - YouTube (http://www.youtube.com)

@@ -5,31 +5,34 @@ namespace Emerap\OembedFilter\Service;
 use Emerap\OembedFilter\ServiceBase;
 
 /**
- * Class AlphaAppNetOembed.
+ * Class InstagramOembed.
  *
  * @package Emerap\OembedFilter\Service
  */
-class AlphaAppNetOembed extends ServiceBase {
+class InstagramOembed extends ServiceBase {
 
   /**
    * {@inheritdoc}
    */
   public function getId() {
-    return 'AlphaAppNet';
+    return 'Instagram';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return 'http(|s):\/\/alpha\.app\.net\/.*\/post';
+    return array(
+      'http(|s):\/\/instagram\.com\/p',
+      'http(|s):\/\/instagr\.am\/p',
+    );
   }
 
   /**
    * {@inheritdoc}
    */
   public function getEndpoit() {
-    return 'https://alpha-api.app.net/oembed';
+    return 'http://api.instagram.com/oembed';
   }
 
   /**
@@ -43,7 +46,7 @@ class AlphaAppNetOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getExampleUrls() {
-    return 'https://alpha.app.net/breakingnews/post/70349321';
+    return 'http://instagr.am/p/fA9uwTtkSN';
   }
 
 }
