@@ -22,7 +22,7 @@ class SoundCloudOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return '/https:\/\/soundcloud\.com/';
+    return 'https:\/\/soundcloud\.com';
   }
 
   /**
@@ -37,6 +37,13 @@ class SoundCloudOembed extends ServiceBase {
    */
   public function filter($fields) {
     return $fields['html'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getExampleUrls() {
+    return 'https://soundcloud.com/nilin/kish-na-krayu';
   }
 
 }

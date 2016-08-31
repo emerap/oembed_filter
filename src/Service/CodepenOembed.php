@@ -22,7 +22,7 @@ class CodepenOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return '/http(|s):\/\/codepen\.io/';
+    return 'http(|s):\/\/codepen\.io';
   }
 
   /**
@@ -37,6 +37,13 @@ class CodepenOembed extends ServiceBase {
    */
   public function filter($fields) {
     return $fields['html'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getExampleUrls() {
+    return 'http://codepen.io/alexzaworski/pen/mEkvAG';
   }
 
 }

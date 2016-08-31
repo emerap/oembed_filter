@@ -22,7 +22,7 @@ class AlphaAppNetOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return '/https:\/\/alpha\.app\.net\/.*\/post\/.*/';
+    return 'https:\/\/alpha\.app\.net\/.*\/post\/.*';
   }
 
   /**
@@ -37,6 +37,13 @@ class AlphaAppNetOembed extends ServiceBase {
    */
   public function filter($fields) {
     return $fields['html'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getExampleUrls() {
+    return 'https://alpha.app.net/breakingnews/post/70349321';
   }
 
 }

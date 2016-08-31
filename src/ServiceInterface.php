@@ -42,6 +42,14 @@ interface ServiceInterface {
   public function getFormatResponse();
 
   /**
+   * Get get example urls.
+   *
+   * @return string|array
+   *   Example urls.
+   */
+  public function getExampleUrls();
+
+  /**
    * Filter callback.
    *
    * @param array $fields

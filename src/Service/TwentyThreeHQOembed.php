@@ -23,7 +23,7 @@ class TwentyThreeHQOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return '/http:\/\/www\.23hq\.com/';
+    return 'http:\/\/www\.23hq\.com';
   }
 
   /**
@@ -45,6 +45,13 @@ class TwentyThreeHQOembed extends ServiceBase {
    */
   public function getFormatResponse() {
     return EMERAP_OEMBED_FILTER_RESPONSE_XML;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getExampleUrls() {
+    return 'http://www.23hq.com/Spelterini/photo/24385772';
   }
 
 }

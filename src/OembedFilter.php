@@ -65,17 +65,19 @@ class OembedFilter {
       $patterns = $service->getPatterns();
       if (is_array($patterns)) {
         foreach ($patterns as $pattern) {
-          preg_match($pattern, $url, $match);
+          preg_match('/' . $pattern . '/', $url, $match);
           if ($match) {
             $this->addUrl($url, $service);
+
             return TRUE;
           }
         }
       }
       else {
-        preg_match($service->getPatterns(), $url, $match);
+        preg_match('/' . $service->getPatterns() . '/', $url, $match);
         if ($match) {
           $this->addUrl($url, $service);
+
           return TRUE;
         }
       }
@@ -91,7 +93,7 @@ class OembedFilter {
    *   All available services.
    */
   static public function getServices() {
-    $files = scandir(__DIR__ . '/Service');
+    $files    = scandir(__DIR__ . '/Service');
     $services = array();
     foreach ($files as $file) {
       preg_match('/.*Oembed/', $file, $match);
@@ -99,6 +101,7 @@ class OembedFilter {
         $services[] = '\Emerap\OembedFilter\Service\\' . $match[0];
       }
     }
+
     return $services;
   }
 
@@ -115,7 +118,7 @@ class OembedFilter {
 
     if (!isset($urls[$url])) {
       $urls[]     = array(
-        'path'    => $url,
+        'path' => $url,
         'service' => $service,
       );
       $this->urls = $urls;
@@ -134,7 +137,7 @@ class OembedFilter {
       $service = $url['service'];
       $path    = $url['path'];
       if ($oembed_request = $this->getOembedData($service, $path)) {
-        $snippet = $this->buildHtml($service->filter($oembed_request), $service);
+        $snippet        = $this->buildHtml($service->filter($oembed_request), $service);
         $replace[$path] = $snippet;
       }
     }
@@ -142,6 +145,7 @@ class OembedFilter {
     foreach ($replace as $path => $item) {
       $out = str_replace($path, $item, $out);
     }
+
     return $out;
   }
 
@@ -157,7 +161,7 @@ class OembedFilter {
    *   Request from oembed service.
    */
   private function getOembedData(ServiceBase $service, $url) {
-    $req = FALSE;
+    $req          = FALSE;
     $query_params = array('url' => $url);
     // Checking format response on endpoint path.
     if (!preg_match('/\.(json|xml)$/', $service->getEndpoit())) {
@@ -171,6 +175,7 @@ class OembedFilter {
       $req  = $this->parse($data, $service);
       curl_close($curl);
     }
+
     return $req;
   }
 
@@ -201,6 +206,7 @@ class OembedFilter {
         }
       }
     }
+
     return $oembed_data;
   }
 
@@ -236,9 +242,9 @@ class OembedFilter {
    *   Total string.
    */
   private function buildHtml($snippet, ServiceBase $service) {
-    $out = $this->getHtmlWrapper();
+    $out        = $this->getHtmlWrapper();
     $css_vendor = $this->getVendorCssClass();
-    $classes = array(
+    $classes    = array(
       $css_vendor . '-wrapper',
       $css_vendor . '-' . mb_strtolower($service->getId()),
     );
@@ -283,6 +289,7 @@ class OembedFilter {
    */
   private function setSourceText($source_text) {
     $this->sourceText = $source_text;
+
     return $this;
   }
 
