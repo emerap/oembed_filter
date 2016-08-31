@@ -60,10 +60,22 @@ class OembedFilter {
     }
 
     foreach ($this->getServicesObjects() as $service) {
-      preg_match($service->getPatterns(), $url, $match);
-      if ($match) {
-        $this->addUrl($url, $service);
-        return TRUE;
+      $patterns = $service->getPatterns();
+      if (is_array($patterns)) {
+        foreach ($patterns as $pattern) {
+          preg_match($pattern, $url, $match);
+          if ($match) {
+            $this->addUrl($url, $service);
+            return TRUE;
+          }
+        }
+      }
+      else {
+        preg_match($service->getPatterns(), $url, $match);
+        if ($match) {
+          $this->addUrl($url, $service);
+          return TRUE;
+        }
       }
     }
 
