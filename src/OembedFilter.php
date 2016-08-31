@@ -192,51 +192,13 @@ class OembedFilter {
     else {
       // Xml parse.
       $xml = simplexml_load_string($data);
-
-      switch (TRUE) {
-
-        case (isset($xml->type)):
-          $oembed_data['type'] = (string) $xml->type;
-
-        case (isset($xml->width)):
-          $oembed_data['width'] = (string) $xml->width;
-
-        case (isset($xml->provider_name)):
-          $oembed_data['provider_name'] = (string) $xml->provider_name;
-
-        case (isset($xml->thumbnail_url)):
-          $oembed_data['thumbnail_url'] = (string) $xml->thumbnail_url;
-
-        case (isset($xml->thumbnail_height)):
-          $oembed_data['thumbnail_height'] = (string) $xml->thumbnail_height;
-
-        case (isset($xml->title)):
-          $oembed_data['title'] = (string) $xml->title;
-
-        case (isset($xml->height)):
-          $oembed_data['height'] = (string) $xml->height;
-
-        case (isset($xml->provider_url)):
-          $oembed_data['provider_url'] = (string) $xml->provider_url;
-
-        case (isset($xml->thumbnail_width)):
-          $oembed_data['thumbnail_width'] = (string) $xml->thumbnail_width;
-
-        case (isset($xml->author_url)):
-          $oembed_data['author_url'] = (string) $xml->author_url;
-
-        case (isset($xml->version)):
-          $oembed_data['version'] = (string) $xml->version;
-
-        case (isset($xml->html)):
-          $oembed_data['html'] = (string) $xml->html;
-
-        case (isset($xml->author_name)):
-          $oembed_data['author_name'] = (string) $xml->author_name;
+      foreach ($xml as $item) {
+        $key = $item->getName();
+        if (isset($xml->$key)) {
+          $oembed_data[$key] = (string) $xml->$key;
+        }
       }
-
     }
-
     return $oembed_data;
   }
 
