@@ -78,7 +78,10 @@ class OembedFilter {
    */
   static public function getServices() {
     return array(
+      '\Emerap\OembedFilter\Service\CodepenOembed',
       '\Emerap\OembedFilter\Service\YoutubeOembed',
+      '\Emerap\OembedFilter\Service\SoundCloudOembed',
+      '\Emerap\OembedFilter\Service\VimeoOembed',
     );
   }
 
@@ -107,7 +110,6 @@ class OembedFilter {
    */
   public function apply() {
     $this->findUrls();
-
     $replace = array();
 
     foreach ($this->getUrls() as $url) {
@@ -139,15 +141,15 @@ class OembedFilter {
    */
   private function getOembedData(ServiceBase $service, $url) {
     $req = FALSE;
+
+    $query_params = $query_params = array(
+      'url'    => $url,
+      'format' => ($service->getFormatResponse() == EMERAP_OEMBED_FILTER_RESPONSE_JSON) ? 'json' : 'xml',
+    );
+
     if ($curl = curl_init()) {
-      curl_setopt($curl, CURLOPT_URL, $service->getEndpoit());
+      curl_setopt($curl, CURLOPT_URL, $service->getEndpoit() . '?' . http_build_query($query_params));
       curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-      curl_setopt($curl, CURLOPT_POST, !TRUE);
-      $query_params = array(
-        'url'    => $url,
-        'format' => ($service->getFormatResponse() == EMERAP_OEMBED_FILTER_RESPONSE_JSON) ? 'json' : 'xml',
-      );
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $query_params);
       $data = curl_exec($curl);
       $req  = $this->parse($data, $service);
       curl_close($curl);
@@ -169,7 +171,7 @@ class OembedFilter {
   private function parse($data, ServiceBase $service) {
     $oembed_data = array();
 
-    if ($service->getFormatResponse() == 'json') {
+    if ($service->getFormatResponse() == EMERAP_OEMBED_FILTER_RESPONSE_JSON) {
       $oembed_data = (array) json_decode($data);
     }
     else {

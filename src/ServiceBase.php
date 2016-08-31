@@ -16,7 +16,7 @@ abstract class ServiceBase implements ServiceInterface {
    *   Format response.
    */
   public function getFormatResponse() {
-    return EMERAP_OEMBED_FILTER_RESPONSE_XML;
+    return EMERAP_OEMBED_FILTER_RESPONSE_JSON;
   }
 
 }
