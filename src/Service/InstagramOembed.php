@@ -23,8 +23,8 @@ class InstagramOembed extends ServiceBase {
    */
   public function getPatterns() {
     return array(
-      'http(|s):\/\/instagram\.com\/p',
-      'http(|s):\/\/instagr\.am\/p',
+      'http(|s):\/\/(|www\.)instagram\.com\/p',
+      'http(|s):\/\/(|www\.)instagr\.am\/p',
     );
   }
 
@@ -32,7 +32,7 @@ class InstagramOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getEndpoit() {
-    return 'http://api.instagram.com/oembed';
+    return 'https://api.instagram.com/oembed/';
   }
 
   /**
@@ -46,7 +46,7 @@ class InstagramOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getExampleUrls() {
-    return 'http://instagr.am/p/fA9uwTtkSN';
+    return 'https://www.instagram.com/p/BJdYw4SDQAp';
   }
 
 }
