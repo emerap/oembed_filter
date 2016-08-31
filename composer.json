@@ -20,7 +20,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Emerap\\OembedFilter\\": "./src/"
+      "Emerap\\OembedFilter\\": "./src/",
+      "Emerap\\OembedFilter\\Service\\": "./src/Service/"
     }
   }
 }
