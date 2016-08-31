@@ -5,31 +5,31 @@ namespace Emerap\OembedFilter\Service;
 use Emerap\OembedFilter\ServiceBase;
 
 /**
- * Class AlphaAppNetOembed.
+ * Class AmChartsOembed.
  *
  * @package Emerap\OembedFilter\Service
  */
-class AlphaAppNetOembed extends ServiceBase {
+class AmChartsOembed extends ServiceBase {
 
   /**
    * {@inheritdoc}
    */
   public function getId() {
-    return 'AlphaAppNet';
+    return 'AmCharts';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getPatterns() {
-    return 'https:\/\/alpha\.app\.net\/.*\/post\/.*';
+    return 'http:\/\/live\.amcharts\.com\/.*';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getEndpoit() {
-    return 'https://alpha-api.app.net/oembed';
+    return 'https://live.amcharts.com/oembed';
   }
 
   /**
@@ -43,7 +43,7 @@ class AlphaAppNetOembed extends ServiceBase {
    * {@inheritdoc}
    */
   public function getExampleUrls() {
-    return 'https://alpha.app.net/breakingnews/post/70349321';
+    return 'https://live.amcharts.com/NjEwN';
   }
 
 }
