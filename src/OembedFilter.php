@@ -106,6 +106,22 @@ class OembedFilter {
   }
 
   /**
+   * Get service instance.
+   *
+   * @param string $class
+   *   Service instance.
+   *
+   * @return ServiceBase|bool
+   *    Service instance or false.
+   */
+  static public function getServiceInstance($class) {
+    if (class_exists($class)) {
+      return new $class();
+    }
+    return FALSE;
+  }
+
+  /**
    * Add url.
    *
    * @param string $url

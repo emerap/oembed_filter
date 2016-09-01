@@ -44,7 +44,7 @@ interface ServiceInterface {
   /**
    * Get format response.
    *
-   * @return string
+   * @return int
    *   Format response.
    */
   public function getFormatResponse();

@@ -42,6 +42,13 @@ class VimeoOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
+  public function getDiscovery() {
+    return TRUE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function filter($fields) {
     return $fields['html'];
   }
