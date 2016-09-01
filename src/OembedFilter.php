@@ -53,7 +53,7 @@ class OembedFilter {
     // Create instances if not exist.
     if (!$this->getServicesObjects()) {
       $services = array();
-      foreach (self::getServices() as $service) {
+      foreach (self::getOembedClasses() as $service) {
         /** @var \Emerap\OembedFilter\ServiceInterface $instance */
         $instance                     = new $service();
         $services[$instance->getId()] = $instance;
@@ -87,12 +87,12 @@ class OembedFilter {
   }
 
   /**
-   * Get all services.
+   * Get all service classes.
    *
    * @return array
-   *   All available services.
+   *   All available service classes.
    */
-  static public function getServices() {
+  static public function getOembedClasses() {
     $files    = scandir(__DIR__ . '/Service');
     $services = array();
     foreach ($files as $file) {
@@ -119,6 +119,36 @@ class OembedFilter {
       return new $class();
     }
     return FALSE;
+  }
+
+  /**
+   * Get service instances.
+   *
+   * @return ServiceBase[]
+   *   Service instances.
+   */
+  public static function getServiceInstances() {
+    $services = [];
+    foreach (self::getOembedClasses() as $service) {
+      $instance = self::getServiceInstance($service);
+      $services[$service] = $instance;
+    }
+    return $services;
+  }
+
+  /**
+   * Get service hashes.
+   *
+   * @return array
+   *   Service hashes.
+   */
+  public static function getServiceHashes() {
+    $services = [];
+    foreach (self::getOembedClasses() as $service) {
+      $instance = self::getServiceInstance($service);
+      $services[$service] = $instance->getHash();
+    }
+    return $services;
   }
 
   /**
@@ -153,7 +183,7 @@ class OembedFilter {
       $service = $url['service'];
       $path    = $url['path'];
       if ($oembed_request = $this->getOembedData($service, $path)) {
-        $snippet        = $this->buildHtml($service->filter($oembed_request), $service);
+        $snippet        = self::buildHtml($service->filter($oembed_request), $service);
         $replace[$path] = $snippet;
       }
     }
@@ -176,7 +206,7 @@ class OembedFilter {
    * @return bool|mixed
    *   Request from oembed service.
    */
-  private function getOembedData(ServiceBase $service, $url) {
+  public static function getOembedData(ServiceBase $service, $url) {
     $req          = FALSE;
     $query_params = array('url' => $url);
     // Checking format response on endpoint path.
@@ -188,7 +218,7 @@ class OembedFilter {
       curl_setopt($curl, CURLOPT_URL, $service->getEndpoit() . '?' . http_build_query($query_params));
       curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
       $data = curl_exec($curl);
-      $req  = $this->parse($data, $service);
+      $req  = self::parse($data, $service);
       curl_close($curl);
     }
 
@@ -206,7 +236,7 @@ class OembedFilter {
    * @return array
    *   Deserialize oembed request.
    */
-  private function parse($data, ServiceBase $service) {
+  public static function parse($data, ServiceBase $service) {
     $oembed_data = array();
 
     if ($service->getFormatResponse() == EMERAP_OEMBED_FILTER_RESPONSE_JSON) {
@@ -232,7 +262,7 @@ class OembedFilter {
    * @return string
    *   Vendor css class.
    */
-  private function getVendorCssClass() {
+  public static function getVendorCssClass() {
     return 'emerap-oembed';
   }
 
@@ -242,7 +272,7 @@ class OembedFilter {
    * @return string
    *   Html wrapper.
    */
-  private function getHtmlWrapper() {
+  public static function getHtmlWrapper() {
     return '<div class="%classes">%content</div>';
   }
 
@@ -257,9 +287,9 @@ class OembedFilter {
    * @return string
    *   Total string.
    */
-  private function buildHtml($snippet, ServiceBase $service) {
-    $out        = $this->getHtmlWrapper();
-    $css_vendor = $this->getVendorCssClass();
+  public static function buildHtml($snippet, ServiceBase $service) {
+    $out        = self::getHtmlWrapper();
+    $css_vendor = self::getVendorCssClass();
     $classes    = array(
       $css_vendor . '-wrapper',
       $css_vendor . '-' . mb_strtolower($service->getId()),
