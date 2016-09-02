@@ -210,7 +210,7 @@ class OembedFilter {
     $req          = FALSE;
     $query_params = array('url' => $url);
     // Checking format response on endpoint path.
-    if (!preg_match('/\.(json|xml)$/', $service->getEndpoit())) {
+    if (!preg_match('/(\.|\/)(json|xml)$/', $service->getEndpoit())) {
       $query_params['format'] = ($service->getFormatResponse() == EMERAP_OEMBED_FILTER_RESPONSE_JSON) ? 'json' : 'xml';
     }
     // Get oembed response from service.
