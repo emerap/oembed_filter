@@ -49,7 +49,7 @@ class YoutubeOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
+  public function getExamples() {
     return 'https://www.youtube.com/watch?v=x30YOmfeVTE';
   }
 

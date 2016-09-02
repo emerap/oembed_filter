@@ -42,7 +42,7 @@ class AmChartsOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
+  public function getExamples() {
     return 'https://live.amcharts.com/NjEwN';
   }
 

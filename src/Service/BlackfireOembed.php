@@ -52,7 +52,7 @@ class BlackfireOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
+  public function getExamples() {
     return 'https://blackfire.io/profiles/ffcffdc1-50db-42bc-bcbb-dcfe86758e26/graph';
   }
 

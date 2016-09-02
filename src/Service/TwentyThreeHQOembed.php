@@ -50,7 +50,7 @@ class TwentyThreeHQOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
+  public function getExamples() {
     return 'http://www.23hq.com/Spelterini/photo/24385772';
   }
 

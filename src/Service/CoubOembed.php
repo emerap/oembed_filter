@@ -42,7 +42,7 @@ class CoubOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
+  public function getExamples() {
     return 'http://coub.com/view/2ohum';
   }
 

@@ -42,7 +42,7 @@ class AnimotoOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
+  public function getExamples() {
     return 'https://animoto.com/play/JzwsBn5FRVxS0qoqcBP5zA';
   }
 

@@ -42,7 +42,7 @@ class CodepenOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
+  public function getExamples() {
     return 'http://codepen.io/alexzaworski/pen/mEkvAG';
   }
 

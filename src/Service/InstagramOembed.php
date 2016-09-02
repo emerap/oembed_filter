@@ -45,7 +45,7 @@ class InstagramOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
+  public function getExamples() {
     return 'https://www.instagram.com/p/BJdYw4SDQAp';
   }
 

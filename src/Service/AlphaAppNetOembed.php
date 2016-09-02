@@ -42,7 +42,7 @@ class AlphaAppNetOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
+  public function getExamples() {
     return 'https://alpha.app.net/breakingnews/post/70349321';
   }
 

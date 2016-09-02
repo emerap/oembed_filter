@@ -23,12 +23,11 @@ class VimeoOembed extends ServiceBase {
    */
   public function getPatterns() {
     return array(
-      'https:\/\/vimeo\.com\/.*',
-      'https:\/\/vimeo\.com\/album\/.*\/video\/.*',
-      'https:\/\/vimeo\.com\/channels\/.*/.*',
-      'https:\/\/vimeo\.com\/groups\/.*/videos/.*',
-      'https:\/\/vimeo\.com\/ondemand\/.*\/.*',
-      'https:\/\/player\.vimeo\.com\/video\/.*',
+      'https:\/\/vimeo\.com\/album\/.*\/video',
+      'https:\/\/vimeo\.com\/channels',
+      'https:\/\/vimeo\.com\/groups\/.*/videos',
+      'https:\/\/vimeo\.com\/ondemand',
+      'https:\/\/player\.vimeo\.com\/video',
     );
   }
 
@@ -56,8 +55,11 @@ class VimeoOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
-
+  public function getExamples() {
+    return array(
+      'https://vimeo.com/29067223',
+      'https://vimeo.com/37149357',
+    );
   }
 
 }

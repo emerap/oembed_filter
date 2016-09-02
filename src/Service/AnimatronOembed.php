@@ -49,7 +49,7 @@ class AnimatronOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
+  public function getExamples() {
     return 'https://www.animatron.com/project/a7d88f565846acac316121d1';
   }
 

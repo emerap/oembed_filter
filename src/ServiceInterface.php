@@ -50,12 +50,12 @@ interface ServiceInterface {
   public function getFormatResponse();
 
   /**
-   * Get get example urls.
+   * Get get example strings.
    *
    * @return string|array
-   *   Example urls.
+   *   Example strings.
    */
-  public function getExampleUrls();
+  public function getExamples();
 
   /**
    * Filter callback.

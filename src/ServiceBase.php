@@ -23,7 +23,7 @@ abstract class ServiceBase implements ServiceInterface {
     $str .= $this->getFormatResponse();
     $str .= $this->getDiscovery();
     $str .= implode('', (array) $this->getPatterns());
-    $str .= implode('', (array) $this->getExampleUrls());
+    $str .= implode('', (array) $this->getExamples());
 
     return md5($str);
   }

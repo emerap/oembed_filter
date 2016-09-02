@@ -42,7 +42,7 @@ class SoundCloudOembed extends ServiceBase {
   /**
    * {@inheritdoc}
    */
-  public function getExampleUrls() {
+  public function getExamples() {
     return 'https://soundcloud.com/nilin/kish-na-krayu';
   }
 
