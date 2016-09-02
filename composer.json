@@ -1,7 +1,7 @@
 {
   "name": "emerap/oembed_filter",
   "type": "library",
-  "description": "Oembed filter",
+  "description": "Oembed service link's replacement to different types of content",
   "keywords": [
     "api", "oembed"
   ],
